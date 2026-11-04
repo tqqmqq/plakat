@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Полухин Дмитрий Георгиевич</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Caveat:wght@500;700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#eee8dc;color:#26394a;
+ font-family:Manrope,Arial,sans-serif;
+}
+.poster{
+ max-width:1250px;margin:25px auto;
+ background:#faf7ef;overflow:hidden;
+ box-shadow:0 15px 50px #303b4820;
+ position:relative;
+}
+.hero{
+ padding:45px 6% 55px;
+ background:#203b55;color:white;
+ position:relative;overflow:hidden;
+}
+.hero:before{
+ content:"";position:absolute;width:450px;height:450px;
+ border:1px solid #ffffff35;border-radius:50%;
+ right:-150px;top:-220px;
+ box-shadow:0 0 0 35px #ffffff0a,0 0 0 75px #ffffff0a;
+}
+.hero:after{
+ content:"";position:absolute;width:200px;height:200px;
+ background:#e9ae68;border-radius:50%;
+ right:10%;bottom:-160px;
+}
+.topline{
+ font-size:11px;letter-spacing:4px;color:#f2c978;
+ font-weight:800;
+}
+h1{
+ font-family:"Playfair Display",serif;
+ font-size:clamp(40px,7vw,78px);
+ line-height:1.06;max-width:850px;
+ margin:25px 0 12px;
+ position:relative;z-index:1;
+}
+.hero-sub{
+ color:#d4e0e4;font-size:15px;letter-spacing:1px;
+}
+.hero-layout{
+ display:grid;grid-template-columns:1fr 1fr;
+ gap:35px;align-items:center;margin-top:35px;
+ position:relative;z-index:1;
+}
+.portrait{
+ min-height:280px;background:#e7dfce;
+ border:8px solid #f6edda;
+ transform:rotate(-2deg);
+ box-shadow:10px 12px 0 #111f32;
+ display:flex;align-items:center;justify-content:center;
+ color:#526b79;text-align:center;padding:20px;
+}
+.portrait span{font-family:Caveat;font-size:27px}
+.intro-label{
+ font-family:Caveat;font-size:28px;color:#f2c978;
+}
+.intro-text{
+ font-family:"Playfair Display",serif;
+ font-size:clamp(23px,3vw,36px);
+ line-height:1.35;margin-top:8px;
+}
+.intro-small{font-size:13px;color:#d1dce0;line-height:1.8}
+.section{
+ padding:45px 6%;
+}
+.section-heading{
+ display:flex;justify-content:space-between;
+ align-items:end;gap:15px;margin-bottom:30px;
+}
+.section-heading h2{
+ font-family:"Playfair Display",serif;
+ font-size:36px;margin:0;color:#203b55;
+}
+.section-heading span{
+ font-family:Caveat;font-size:23px;color:#c16c51;
+}
+.story-grid{
+ display:grid;
+ grid-template-columns:minmax(0, 1fr);
+ gap:19px;
+ width:100%;
+ max-width:900px;
+ margin-inline:auto;
+}
+.story{
+ border:0;cursor:pointer;text-align:left;
+ min-height:210px;padding:23px;
+ position:relative;overflow:hidden;
+ transition:.3s;box-shadow:0 8px 15px #26394a13;
+}
+.story:hover{transform:translateY(-7px) rotate(0deg);box-shadow:0 16px 25px #26394a25}
+.story{background-size:cover;background-position:center}
+.story:nth-child(1){grid-column:1 / -1;background:linear-gradient(rgba(255,255,255,.70),rgba(255,255,255,.70)),url("images/min2.jpg") center/cover no-repeat;transform:none}
+.story:nth-child(2){grid-column:1 / -1;background:linear-gradient(rgba(255,255,255,.70),rgba(255,255,255,.70)),url("images/min3.jpg") center/cover no-repeat;transform:none}
+.story:nth-child(3){grid-column:1 / -1;background:linear-gradient(rgba(255,255,255,.70),rgba(255,255,255,.70)),url("images/min4.jpg") center/cover no-repeat;transform:none}
+.story:nth-child(4){grid-column:1 / -1;background:linear-gradient(rgba(255,255,255,.70),rgba(255,255,255,.70)),url("images/min5.jpg") center/cover no-repeat;transform:none}
+.story:nth-child(5){grid-column:1 / -1;background:linear-gradient(rgba(255,255,255,.70),rgba(255,255,255,.70)),url("images/min6.jpg") center/cover no-repeat;transform:none}
+.story:nth-child(6){grid-column:1 / -1;background:linear-gradient(rgba(255,255,255,.70),rgba(255,255,255,.70)),url("images/min7.jpg") center/cover no-repeat;min-height:155px;transform:none}
+.story .num{
+ font-size:12px;letter-spacing:3px;font-weight:800;
+ opacity:.65;
+}
+.story .emoji{font-size:35px;margin:15px 0 5px}
+.story h3{
+ font-family:"Playfair Display",serif;
+ font-size:clamp(21px,2.6vw,30px);
+ margin:5px 0 9px;
+}
+.story p{font-size:12px;line-height:1.6;max-width:270px}
+.story .arrow{
+ position:absolute;right:20px;bottom:15px;
+ font-size:25px;
+}
+.story:after{
+ content:"";position:absolute;width:115px;height:115px;
+ border:1px solid #26394a35;border-radius:50%;
+ right:-45px;top:-45px;
+}
+.quote{
+ margin:15px 6% 45px;padding:30px;
+ background:#203b55;color:#fff;
+ text-align:center;
+}
+.quote p{
+ font-family:"Playfair Display",serif;
+ font-size:clamp(20px,3vw,29px);
+}
+.quote span{font-family:Caveat;color:#f2c978;font-size:22px}
+footer{
+ padding:25px;text-align:center;
+ background:#e8dfcd;color:#53636c;
+ font-size:11px;letter-spacing:2px;
+}
+.modal{
+ display:none;position:fixed;inset:0;
+ z-index:20;background:#142638e8;
+ padding:18px;align-items:center;justify-content:center;
+ backdrop-filter:blur(7px);
+}
+.modal.open{display:flex}
+.dialog{
+ width:min(950px,100%);max-height:92vh;
+ overflow:auto;background:#faf7ef;
+ position:relative;padding:35px;
+ box-shadow:8px 8px 0 #e9b76b;
+}
+.close{
+ position:sticky;top:0;float:right;
+ width:42px;height:42px;border:0;
+ background:#203b55;color:white;
+ font-size:26px;cursor:pointer;
+}
+.dialog h2{
+ font-family:"Playfair Display",serif;
+ font-size:clamp(27px,4vw,39px);
+ color:#203b55;margin:5px 50px 20px 0;
+}
+.dialog p,.dialog li{
+ font-size:15px;line-height:1.8;color:#45545a;
+}
+.dialog ul{padding-left:23px}
+.gallery{
+ display:grid;
+ grid-template-columns:minmax(0,1fr);
+ gap:18px;margin:25px 0;
+}
+.photo{
+ min-height:180px;background:#e9e4d7;
+ border:2px dashed #a5a18f;
+ display:flex;align-items:center;justify-content:center;
+ text-align:center;padding:15px;
+ color:#687a7d;font-family:Caveat;font-size:22px;
+ cursor:pointer;
+}
+.photo:hover{background:#dfe9e4}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.caption{text-align:center;font-size:12px;color:#67777a;margin-top:8px}
+.video{
+ display:inline-block;padding:14px 20px;
+ background:#d9795e;color:white;
+ text-decoration:none;font-weight:700;margin:12px 0;
+}
+.note{
+ padding:16px;background:#f1e7c9;
+ border-left:5px solid #d4aa4e;
+ line-height:1.7;margin:20px 0;
+}
+@media(max-width:700px){
+ .hero-layout{grid-template-columns:1fr}
+ .portrait{min-height:220px}
+ .story:nth-child(n){grid-column:span 6;transform:none}
+ .story:nth-child(6){grid-column:span 12}
+ .section-heading{display:block}
+}
+@media(max-width:430px){
+ .story:nth-child(n){grid-column:span 12}
+ .dialog{padding:22px}
+}
+</style>
+</head>
+<body>
+
+<main class="poster">
+
+<section class="hero">
+ <div class="topline">ЛИСТАЯ СТРАНИЦЫ ЖИЗНИ • ИСТОРИЯ ЧЕЛОВЕКА</div>
+ <h1>У каждого времени<br>свои герои!</h1>
+ <div class="hero-sub">Память, мужество и судьба человека</div>
+
+ <div class="hero-layout">
+  <div class="portrait">
+<img src="images/1.jpg" alt="Дмитрий Полухин" style="width:100%; height:100%; min-height:280px; object-fit:cover;">  </div>    
+  <div>
+   <div class="intro-label">Главный герой этой истории</div>
+   <div class="intro-text">Полухин<br>Дмитрий Георгиевич</div>
+   <p class="intro-small">
+    Воин-интернационалист, семьянин,
+    тренер и человек, чья история
+    достойна памяти поколений.
+   </p>
+  </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="section-heading">
+  <h2>Страницы жизни</h2>
+ </div>
+
+ <div class="story-grid">
+
+  <button class="story" onclick="openPage('childhood')">
+   <div class="num">01 / НАЧАЛО</div>
+   <h3>Детство и юность</h3>
+   <p>Первые воспоминания, дорога во взрослую жизнь.</p>
+   <span class="arrow">↗</span>
+  </button>
+
+  <button class="story" onclick="openPage('afghan')">
+   <div class="num">02 / ИСПЫТАНИЕ</div>
+   <h3>Долг. Честь. Мужество.</h3>
+   <p>Военная служба и страницы афганской истории.</p>
+   <span class="arrow">↗</span>
+  </button>
+
+  <button class="story" onclick="openPage('awards')">
+   <div class="num">03 / ПРИЗНАНИЕ</div>
+   <h3>Награды</h3>
+   <p>Знаки мужества, заслуг и памяти.</p>
+   <span class="arrow">↗</span>
+  </button>
+
+  <button class="story" onclick="openPage('memory')">
+   <div class="num">04 / ПРЕЕМСТВЕННОСТЬ</div>
+   <h3>Живая память</h3>
+   <p>Встречи, памятные мероприятия, уважение поколений.</p>
+   <span class="arrow">↗</span>
+  </button>
+
+  <button class="story" onclick="openPage('peace')">
+   <div class="num">05 / НАСТОЯЩЕЕ</div>
+   <h3>Созидая мирное завтра</h3>
+   <p>Спорт, воспитание молодёжи и тренерская работа.</p>
+   <span class="arrow">↗</span>
+  </button>
+
+  <button class="story" onclick="openPage('family')">
+   <div class="num">06 / САМОЕ ДОРОГОЕ</div>
+   <h3>Надёжный тыл ветерана</h3>
+   <p>Семья, близкие и то, ради чего хочется жить.</p>
+   <span class="arrow">↗</span>
+  </button>
+
+ </div>
+</section>
+
+<div class="quote">
+ <p>«У каждого времени свои герои,<br>но память о них не знает времени»</p>
+ <span>История продолжается...</span>
+</div>
+
+<footer>
+</footer>
+</main>
+
+<div class="modal" id="modal">
+ <div class="dialog">
+  <button class="close" onclick="closePage()">×</button>
+  <div id="content"></div>
+ </div>
+</div>
+
+<script>
+const pages={
+
+childhood:`
+<h2>Детство и юность</h2>
+<p>Родился в городе Скопине Рязанской области в семье военного 10.06.1961 года. Вся жизнь Дмитрия прошла в военных городках. С трёх лет Дмитрий стал проживать с семьёй в Армении из-за перевода отца. Там окончил школу и железнодорожный техникум. В 1980 году был призван в ряды Советской Армии в Ферганский 345 отдельный гвардейский парашютно-десантный полк. После обучения попал в Афганистан…</p>
+<div class="gallery">
+ <div><div class="photo"><img src="images/2.jpg" alt="Детские годы"></div><div class="caption">Детские годы</div></div>
+</div>`,
+
+afghan:`
+<h2>Долг. Честь. Мужество.</h2>
+<p>Служба Дмитрия Георгиевича в Афганистане — важная страница его жизни. В этом разделе будут представлены фотографии, воспоминания и видеоматериалы.</p>
+<a class="video" href="https://drive.google.com/file/d/17qJyoW7XPYsprmjLpC9Em6BfjQK3eVRV/view?usp=drive_link" target="_blank">▶ Посмотреть видео об Афганистане</a>
+<div class="gallery">
+ <div><div class="photo"><img src="images/4.jpg" alt="Военная служба"></div><div class="caption">Военная служба</div></div>
+ <div><div class="photo"><img src="images/5.jpg" alt="Боевые товарищи"></div><div class="caption">Боевые товарищи</div></div>
+ <div><div class="photo"><img src="images/6.jpg" alt="Памятные моменты"></div><div class="caption">Памятные моменты</div></div>
+</div>`,
+
+awards:`
+<h2>Награды</h2>
+<p>Награды Дмитрия Георгиевича — свидетельства его военной службы и признания заслуг.</p>
+<ul>
+<li>Две медали «За отвагу»</li>
+<li>Юбилейная медаль «70 лет Вооружённых сил СССР»</li>
+<li>Медаль «В память 25-летия окончания боевых действий в Афганистане»</li>
+<li>Медаль «20 лет вывода советских войск из Афганистана»</li>
+<li>Медаль «В память 10-летия вывода советских войск из Афганистана»</li>
+<li>Медаль «30 лет вывода советских войск из Афганистана»</li>
+<li>Медаль «Воину-интернационалисту от благодарного афганского народа»</li>
+<li>Нагрудный знак «Воину-интернационалисту»</li>
+<li>Нагрудный знак «Гвардия»</li>
+</ul>
+<div class="note">Для каждой награды можно добавить фотографию медали и скан соответствующей наградной книжки. Изображения будут открываться крупно.</div>
+<div class="gallery">
+ <div><div class="photo"><img src="images/10.jpg" alt="Медали и ордены"></div><div class="caption">Другие награды</div></div>
+</div>`,
+
+memory:`
+<h2>Живая память</h2>
+<p>Дмитрий Георгиевич — постоянный участник патриотических митингов и мероприятий по увековечиванию памяти павших воинов-интернационалистов.</p>
+<div class="gallery">
+ <div><div class="photo"><img src="images/11.jpg" alt="Памятные мероприятия"></div><div class="caption">Памятные мероприятия</div></div>
+ <div><div class="photo"><img src="images/12.jpg" alt="Встречи поколений"></div><div class="caption">Встречи поколений</div></div>
+ <div><div class="photo"><img src="images/13.jpg" alt="Сохранение памяти"></div><div class="caption">Сохранение памяти</div></div>
+</div>`,
+
+peace:`
+<h2>Cозидая мирное завтра</h2>
+<p>Сегодня Дмитрий Георгиевич работает тренером по боксу в филиале учреждения «ГОЦОР единоборств» в городе Речица. Занимается любимым делом — тренирует ребят.</p>
+<div class="gallery">
+ <div><div class="photo"><img src="images/14.jpg" alt="Тренерская работа"></div><div class="caption">Тренерская работа</div></div>
+ <div><div class="photo"><img src="images/15.jpg" alt="Юные спортсмены"></div><div class="caption">Юные спортсмены</div></div>
+ <div><div class="photo"><img src="images/16.jpg" alt="Занятия боксом"></div><div class="caption">Занятия боксом</div></div>
+</div>`,
+
+family:`
+<h2>Надёжный тыл ветерана</h2>
+<p>Дмитрий Георгиевич — счастливый муж, отец и дедушка. Его семья — надежда и опора: жена Людмила, сын Алексей, дочь Екатерина и любимая внучка София.</p>
+<div class="gallery">
+ <div><div class="photo"><img src="images/17.jpg" alt="Семья"></div><div class="caption">Семья</div></div>
+ <div><div class="photo"><img src="images/18.jpg" alt="Дети и близкие"></div><div class="caption">Дети и близкие</div></div>
+</div>`
+};
+
+const modal=document.getElementById('modal');
+const content=document.getElementById('content');
+
+function openPage(id){
+ content.innerHTML=pages[id];
+ modal.classList.add('open');
+ modal.scrollTop=0;
+}
+function closePage(){modal.classList.remove('open')}
+
+modal.addEventListener('click',e=>{
+ if(e.target===modal)closePage();
+});
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape')closePage();
+});
+</script>
+</body>
+</html>
