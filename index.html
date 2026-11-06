@@ -9,7 +9,7 @@
 *{box-sizing:border-box}
 body{
  margin:0;
- background:#0b1319; /* Сплошной темный фон без точек */
+ background:#0b1319;
  color:#1e293b;
  font-family:Manrope,Arial,sans-serif;
  min-height:100vh;
@@ -19,7 +19,6 @@ body{
  padding:20px;
 }
 
-/* АЛЬБОМНЫЙ ФОРМАТ КОНТЕЙНЕРА (Landscape 16:10 / 16:9) */
 .poster{
  width: 100%;
  max-width: 1400px;
@@ -35,7 +34,6 @@ body{
  border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
-/* Боковой декорированный переплет альбома */
 .poster::before {
  content: "";
  position: absolute;
@@ -48,7 +46,6 @@ body{
  pointer-events: none;
 }
 
-/* ЛЕВАЯ ЧАСТЬ АЛЬБОМА: HERO БЛОК */
 .hero{
  padding:40px 8%;
  background:linear-gradient(145deg, #0e1e17 0%, #1c3529 60%, #15281f 100%);
@@ -150,7 +147,6 @@ h1{
  text-align:center;margin:0;
 }
 
-/* ПРАВАЯ ЧАСТЬ АЛЬБОМА: СТРАНИЦЫ И СЕТКА */
 .album-right{
  display:flex;
  flex-direction:column;
@@ -178,7 +174,6 @@ h1{
  font-weight:700;
 }
 
-/* СЕТКА ИСТОРИЙ В АЛЬБОМНОМ ФОРМАТЕ (3x2) */
 .story-grid{
  display:grid;
  grid-template-columns:repeat(3, 1fr);
@@ -227,7 +222,7 @@ h1{
  font-family:"Playfair Display",serif;
 }
 .story:hover p {
- color: #4d4700; /* Текст становится золотистым (или можете указать #000000 для чисто черного) */
+ color: #4d4700;
 }
 .story .arrow{
  position:absolute;right:16px;top:50%;transform:translateY(-50%);
@@ -271,7 +266,6 @@ footer{
  border-top:1px solid #e8e2d5;
 }
 
-/* МОДАЛЬНОЕ ОКНО */
 .modal{
  display:none;position:fixed;inset:0;
  z-index:20;background:rgba(9,17,24,0.85);
@@ -320,7 +314,6 @@ footer{
 .dialog ul{padding-left:20px;margin:15px 0;}
 .dialog li {margin-bottom:6px;}
 
-/* ГАЛЕРЕЯ: ФОТОГРАФИИ ДРУГ НАД ДРУГОМ (В ОДНУ КОЛОНКУ) */
 .gallery{
  display:flex;
  flex-direction:column;
@@ -345,7 +338,6 @@ footer{
  border-color:#d4af37;
 }
 
-/* БЛОК ДЛЯ ФОТО: БЕЗ ОБРЕЗКИ И С АВТО-ВЫСОТОЙ */
 .photo{
  width:100%;
  display:flex;
@@ -386,7 +378,6 @@ footer{
  box-shadow:0 10px 20px rgba(212,175,55,0.4);
 }
 
-/* АДАПТИВНОСТЬ ДЛЯ ПЛАНШЕТОВ И МОБИЛЬНЫХ ЭКРАНОВ */
 @media(max-width:1024px){
  body{padding:10px;align-items:flex-start;}
  .poster{
@@ -411,10 +402,8 @@ footer{
 </head>
 <body>
 
-<!-- ГЛАВНЫЙ АЛЬБОМНЫЙ ПОСТЕР (LANDSCAPE FORMAT) -->
 <main class="poster">
 
- <!-- ЛЕВАЯ СТРАНИЦА: HERO & ПОРТРЕТ -->
  <section class="hero">
   <div>
    <span class="topline">Память и честь</span>
@@ -443,13 +432,11 @@ footer{
   </div>
  </section>
 
- <!-- ПРАВАЯ СТРАНИЦА: ГЛАВЫ И ЦИТАТА -->
  <section class="album-right">
   <div class="section-heading" style="justify-content: center; text-align: center;">
    <h2>Хроника жизни и подвига<br>Полухина Дмитрия Георгиевича</h2>
   </div>
 
-  <!-- СЕТКА ИЗ 6 КНОПОК-ИСТОРИЙ -->
   <div class="story-grid">
 
    <button class="story" onclick="openPage('childhood')">
@@ -492,7 +479,6 @@ footer{
 
 </main>
 
-<!-- МОДАЛЬНОЕ ОКНО ДЛЯ ЧТЕНИЯ ГЛАВ -->
 <div class="modal" id="modal">
  <div class="dialog">
   <button class="close" onclick="closePage()">×</button>
