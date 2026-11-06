@@ -3,322 +3,489 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Полухин Дмитрий Георгиевич</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Caveat:wght@500;700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<title>Полухин Дмитрий Георгиевич — Альбомный формат</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Caveat:wght@500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;background:#eee8dc;color:#26394a;
+ margin:0;
+ background:#0b1319; /* Сплошной темный фон без точек */
+ color:#1e293b;
  font-family:Manrope,Arial,sans-serif;
+ min-height:100vh;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
 }
+
+/* АЛЬБОМНЫЙ ФОРМАТ КОНТЕЙНЕРА (Landscape 16:10 / 16:9) */
 .poster{
- max-width:1250px;margin:25px auto;
- background:#faf7ef;overflow:hidden;
- box-shadow:0 15px 50px #303b4820;
+ width: 100%;
+ max-width: 1400px;
+ min-height: 820px;
+ aspect-ratio: 16 / 10;
+ background:#fdfbf7;
+ overflow:hidden;
+ box-shadow:0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 10px #0b151e, 0 0 0 12px #d4af37;
  position:relative;
+ border-radius:16px;
+ display:grid;
+ grid-template-columns: 38% 1fr;
+ border: 1px solid rgba(212, 175, 55, 0.3);
 }
+
+/* Боковой декорированный переплет альбома */
+.poster::before {
+ content: "";
+ position: absolute;
+ left: 38%;
+ top: 0;
+ bottom: 0;
+ width: 14px;
+ background: linear-gradient(to right, rgba(0,0,0,0.3), transparent 40%, rgba(0,0,0,0.25));
+ z-index: 10;
+ pointer-events: none;
+}
+
+/* ЛЕВАЯ ЧАСТЬ АЛЬБОМА: HERO БЛОК */
 .hero{
- padding:45px 6% 55px;
- background:#203b55;color:white;
- position:relative;overflow:hidden;
+ padding:40px 8%;
+ background:linear-gradient(145deg, #0e1e17 0%, #1c3529 60%, #15281f 100%);
+ color:white;
+ position:relative;
+ overflow:hidden;
+ display:flex;
+ flex-direction:column;
+ justify-content:space-between;
+ border-right: 2px solid #09120e;
 }
 .hero:before{
- content:"";position:absolute;width:450px;height:450px;
- border:1px solid #ffffff35;border-radius:50%;
- right:-150px;top:-220px;
- box-shadow:0 0 0 35px #ffffff0a,0 0 0 75px #ffffff0a;
+ content:"";position:absolute;width:420px;height:420px;
+ border:1px solid rgba(212, 175, 55, 0.15);border-radius:50%;
+ left:-100px;top:-100px;
+ box-shadow:0 0 0 40px rgba(212, 175, 55, 0.05), 0 0 0 90px rgba(212, 175, 55, 0.02);
+ pointer-events:none;
 }
 .hero:after{
- content:"";position:absolute;width:200px;height:200px;
- background:#e9ae68;border-radius:50%;
- right:10%;bottom:-160px;
+ content:"";position:absolute;width:240px;height:240px;
+ background:radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, rgba(184, 134, 11, 0) 70%);
+ border-radius:50%;
+ left:10%;bottom:-60px;opacity:0.5;filter:blur(30px);
+ pointer-events:none;
 }
 .topline{
- font-size:11px;letter-spacing:4px;color:#f2c978;
- font-weight:800;
+ font-size:11px;letter-spacing:3px;color:#e5c158;
+ font-weight:800;text-transform:uppercase;
+ display:inline-block;padding:6px 14px;background:rgba(212, 175, 55, 0.12);
+ border-radius:20px;border:1px solid rgba(212, 175, 55, 0.3);
+ align-self:flex-start;
 }
 h1{
  font-family:"Playfair Display",serif;
- font-size:clamp(40px,7vw,78px);
- line-height:1.06;max-width:850px;
- margin:25px 0 12px;
+ font-size:clamp(32px, 3.2vw, 48px);
+ line-height:1.15;
+ margin:15px 0 8px;
  position:relative;z-index:1;
+ letter-spacing:-0.5px;
+ background: linear-gradient(180deg, #ffffff 0%, #dfd5c6 100%);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
 }
 .hero-sub{
- color:#d4e0e4;font-size:15px;letter-spacing:1px;
+ color:#a3b8cc;font-size:14px;letter-spacing:0.5px;
+ font-weight:500;
+ margin-bottom: 15px;
 }
 .hero-layout{
- display:grid;grid-template-columns:1fr 1fr;
- gap:35px;align-items:center;margin-top:35px;
+ display:flex;
+ flex-direction:column;
+ gap:18px;
  position:relative;z-index:1;
 }
-.portrait{
- min-height:280px;background:#e7dfce;
- border:8px solid #f6edda;
+.portrait-wrap {
+ position:relative;
  transform:rotate(-2deg);
- box-shadow:10px 12px 0 #111f32;
- display:flex;align-items:center;justify-content:center;
- color:#526b79;text-align:center;padding:20px;
+ transition:transform 0.4s ease;
+ max-width: 460px;
+ margin: 0 auto;
 }
-.portrait span{font-family:Caveat;font-size:27px}
+.portrait-wrap:hover {
+ transform:rotate(0deg) scale(1.02);
+}
+.portrait{
+ width: 100%;
+ aspect-ratio: 1280 / 910;
+ background:#1a2820;
+ border:6px solid #d4af37;
+ box-shadow:0 12px 30px rgba(0,0,0,0.5);
+ display:flex;align-items:center;justify-content:center;
+ overflow:hidden;
+ border-radius:6px;
+}
+.portrait img{
+ width:100%;
+ height:100%;
+ object-fit:contain;
+ display:block;
+ transition:transform 0.6s ease;
+}
+.portrait-wrap:hover .portrait img {
+ transform:scale(1.03);
+}
 .intro-label{
- font-family:Caveat;font-size:28px;color:#f2c978;
+ font-family:Caveat;font-size:26px;color:#e5c158;
+ margin-bottom:-2px;
+ text-align:center;
 }
 .intro-text{
  font-family:"Playfair Display",serif;
- font-size:clamp(23px,3vw,36px);
- line-height:1.35;margin-top:8px;
+ font-size:clamp(22px, 2vw, 28px);
+ line-height:1.2;
+ text-align:center;
+ color:#ffffff;
 }
-.intro-small{font-size:13px;color:#d1dce0;line-height:1.8}
-.section{
- padding:45px 6%;
+.intro-small{
+ font-size:13px;color:#c2d1d9;line-height:1.6;opacity:0.9;
+ text-align:center;margin:0;
 }
+
+/* ПРАВАЯ ЧАСТЬ АЛЬБОМА: СТРАНИЦЫ И СЕТКА */
+.album-right{
+ display:flex;
+ flex-direction:column;
+ justify-content:space-between;
+ padding:35px 40px;
+ background:#fdfbf7;
+ overflow-y:auto;
+}
+
 .section-heading{
  display:flex;justify-content:space-between;
- align-items:end;gap:15px;margin-bottom:30px;
+ align-items:flex-end;gap:15px;margin-bottom:20px;
+ border-bottom:2px solid #e8e2d5;
+ padding-bottom:12px;
 }
 .section-heading h2{
  font-family:"Playfair Display",serif;
- font-size:36px;margin:0;color:#203b55;
+ font-size:32px;margin:0;color:#12291e;
 }
 .section-heading span{
- font-family:Caveat;font-size:23px;color:#c16c51;
+ font-family:Caveat;font-size:24px;color:#b8860b;
+ font-weight:700;
 }
+
+/* СЕТКА ИСТОРИЙ В АЛЬБОМНОМ ФОРМАТЕ (3x2) */
 .story-grid{
  display:grid;
- grid-template-columns:minmax(0, 1fr);
- gap:19px;
+ grid-template-columns:repeat(3, 1fr);
+ gap:16px;
  width:100%;
- max-width:900px;
- margin-inline:auto;
+ margin-bottom:20px;
 }
 .story{
- border:0;cursor:pointer;text-align:left;
- min-height:210px;padding:23px;
+ border:1px solid #e8dfce;cursor:pointer;text-align:left;
+ height:150px;padding:20px;
  position:relative;overflow:hidden;
- transition:.3s;box-shadow:0 8px 15px #26394a13;
+ transition:all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+ box-shadow:0 4px 15px rgba(18,41,30,0.05);
+ border-radius:10px;
+ display:flex;flex-direction:column;justify-content:center;
+ background-size:cover;background-position:center;
 }
-.story:hover{transform:translateY(-7px) rotate(0deg);box-shadow:0 16px 25px #26394a25}
-.story{background-size:cover;background-position:center}
-.story:nth-child(1){grid-column:1 / -1;background:linear-gradient(rgba(255,255,255,.70),rgba(255,255,255,.70)),url("images/min2.jpg") center/cover no-repeat;transform:none}
-.story:nth-child(2){grid-column:1 / -1;background:linear-gradient(rgba(255,255,255,.70),rgba(255,255,255,.70)),url("images/min3.jpg") center/cover no-repeat;transform:none}
-.story:nth-child(3){grid-column:1 / -1;background:linear-gradient(rgba(255,255,255,.70),rgba(255,255,255,.70)),url("images/min4.jpg") center/cover no-repeat;transform:none}
-.story:nth-child(4){grid-column:1 / -1;background:linear-gradient(rgba(255,255,255,.70),rgba(255,255,255,.70)),url("images/min5.jpg") center/cover no-repeat;transform:none}
-.story:nth-child(5){grid-column:1 / -1;background:linear-gradient(rgba(255,255,255,.70),rgba(255,255,255,.70)),url("images/min6.jpg") center/cover no-repeat;transform:none}
-.story:nth-child(6){grid-column:1 / -1;background:linear-gradient(rgba(255,255,255,.70),rgba(255,255,255,.70)),url("images/min7.jpg") center/cover no-repeat;min-height:155px;transform:none}
-.story .num{
- font-size:12px;letter-spacing:3px;font-weight:800;
- opacity:.65;
+.story:hover{
+ transform:translateY(-4px);
+ border-color:#d4af37;
+ box-shadow:0 12px 25px rgba(18,41,30,0.15);
 }
-.story .emoji{font-size:35px;margin:15px 0 5px}
-.story h3{
+.story::before {
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(135deg, rgba(255,255,255,0.94) 0%, rgba(247,243,235,0.9) 100%);
+ transition:opacity 0.4s ease;
+ z-index:1;
+}
+.story:hover::before {
+ background:linear-gradient(135deg, rgba(255,255,255,0.88) 0%, rgba(247,243,235,0.8) 100%);
+}
+.story:nth-child(1){background-image:url("images/min2.jpg")}
+.story:nth-child(2){background-image:url("images/min3.jpg")}
+.story:nth-child(3){background-image:url("images/min4.jpg")}
+.story:nth-child(4){background-image:url("images/min5.jpg")}
+.story:nth-child(5){background-image:url("images/min6.jpg")}
+.story:nth-child(6){background-image:url("images/min7.jpg")}
+
+.story p, .story .arrow {
+ position:relative;z-index:2;
+}
+.story p{
+ font-size:15px;
+ line-height:1.35;max-width:82%;margin:0;
+ color:#12291e;font-weight:600;
  font-family:"Playfair Display",serif;
- font-size:clamp(21px,2.6vw,30px);
- margin:5px 0 9px;
 }
-.story p{font-size:12px;line-height:1.6;max-width:270px}
 .story .arrow{
- position:absolute;right:20px;bottom:15px;
- font-size:25px;
+ position:absolute;right:16px;top:50%;transform:translateY(-50%);
+ font-size:18px;color:#b8860b;font-weight:700;
+ background:rgba(184,134,11,0.1);
+ width:36px;height:36px;border-radius:50%;
+ display:flex;align-items:center;justify-content:center;
+ transition:all 0.3s ease;
 }
-.story:after{
- content:"";position:absolute;width:115px;height:115px;
- border:1px solid #26394a35;border-radius:50%;
- right:-45px;top:-45px;
+.story:hover .arrow {
+ background:#d4af37;color:white;
+ transform:translateY(-50%) translateX(3px);
 }
+
 .quote{
- margin:15px 6% 45px;padding:30px;
- background:#203b55;color:#fff;
- text-align:center;
+ margin:0 0 15px;padding:22px 25px;
+ background:linear-gradient(135deg, #12291e 0%, #1c3529 100%);color:#fff;
+ text-align:center;border-radius:10px;
+ position:relative;overflow:hidden;
+ box-shadow:0 6px 20px rgba(18,41,30,0.2);
+ border: 1px solid rgba(212, 175, 55, 0.3);
+}
+.quote::before {
+ content:"“";position:absolute;left:15px;top:-15px;
+ font-family:"Playfair Display",serif;font-size:100px;
+ color:rgba(212,175,55,0.08);pointer-events:none;
 }
 .quote p{
  font-family:"Playfair Display",serif;
- font-size:clamp(20px,3vw,29px);
+ font-size:clamp(16px, 1.5vw, 20px);
+ font-style:italic;line-height:1.3;margin:0 0 6px;
+ color:#f7f5f0;
 }
-.quote span{font-family:Caveat;color:#f2c978;font-size:22px}
+.quote span{font-family:Caveat;color:#e5c158;font-size:22px}
+
 footer{
- padding:25px;text-align:center;
- background:#e8dfcd;color:#53636c;
- font-size:11px;letter-spacing:2px;
+ text-align:center;
+ color:#788896;
+ font-size:11px;letter-spacing:2px;font-weight:600;
+ padding-top:10px;
+ border-top:1px solid #e8e2d5;
 }
+
+/* МОДАЛЬНОЕ ОКНО */
 .modal{
  display:none;position:fixed;inset:0;
- z-index:20;background:#142638e8;
- padding:18px;align-items:center;justify-content:center;
- backdrop-filter:blur(7px);
+ z-index:20;background:rgba(9,17,24,0.85);
+ padding:20px;align-items:center;justify-content:center;
+ backdrop-filter:blur(8px);
+ opacity:0;transition:opacity 0.3s ease;
 }
-.modal.open{display:flex}\n@media(max-width:700px){.modal{padding:10px}.dialog{width:100%;max-height:94dvh;overflow:auto}}
+.modal.open{display:flex;opacity:1;}
 .dialog{
- width:min(950px,100%);max-height:92vh;
- overflow:auto;background:#faf7ef;
- position:relative;padding:35px;
- box-shadow:8px 8px 0 #e9b76b;
+ width:min(900px,95vw);max-height:88vh;
+ overflow-y:auto;background:#fdfbf7;
+ position:relative;padding:35px 40px;
+ box-shadow:0 25px 60px rgba(0,0,0,0.5);
+ border-radius:12px;
+ border: 1px solid #d4af37;
+ transform:translateY(20px);
+ transition:transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.modal.open .dialog {
+ transform:translateY(0);
 }
 .close{
  position:sticky;top:0;float:right;
- width:42px;height:42px;border:0;
- background:#203b55;color:white;
- font-size:26px;cursor:pointer;
+ width:40px;height:40px;border:none;
+ background:#12291e;color:#e5c158;
+ font-size:22px;cursor:pointer;z-index:10;
+ border-radius:50%;display:flex;align-items:center;justify-content:center;
+ transition:all 0.2s ease;
+ box-shadow:0 4px 12px rgba(0,0,0,0.2);
+ border: 1px solid rgba(212, 175, 55, 0.4);
+}
+.close:hover {
+ background:#d4af37;
+ color:#12291e;
+ transform:rotate(90deg);
 }
 .dialog h2{
  font-family:"Playfair Display",serif;
- font-size:clamp(27px,4vw,39px);
- color:#203b55;margin:5px 50px 20px 0;
+ font-size:clamp(26px,3vw,36px);
+ color:#12291e;margin:0 50px 20px 0;
 }
 .dialog p,.dialog li{
- font-size:15px;line-height:1.8;color:#45545a;
+ font-size:15px;line-height:1.7;color:#2c3e50;
 }
-.dialog ul{padding-left:23px}
+.dialog ul{padding-left:20px;margin:15px 0;}
+.dialog li {margin-bottom:6px;}
+
+/* ГАЛЕРЕЯ: ФОТОГРАФИИ ДРУГ НАД ДРУГОМ (В ОДНУ КОЛОНКУ) */
 .gallery{
- display:grid;
- grid-template-columns:minmax(0,1fr);
- gap:18px;margin:25px 0;
+ display:flex;
+ flex-direction:column;
+ gap:24px;
+ margin:25px 0;
+ width:100%;
 }
+.photo-card{
+ background:#fff;
+ border:1px solid #e4dac8;
+ display:flex;
+ flex-direction:column;
+ border-radius:8px;
+ overflow:hidden;
+ box-shadow:0 6px 16px rgba(0,0,0,0.05);
+ transition:transform 0.3s ease, box-shadow 0.3s ease;
+ width:100%;
+}
+.photo-card:hover {
+ transform:translateY(-2px);
+ box-shadow:0 12px 24px rgba(0,0,0,0.1);
+ border-color:#d4af37;
+}
+
+/* БЛОК ДЛЯ ФОТО: БЕЗ ОБРЕЗКИ И С АВТО-ВЫСОТОЙ */
 .photo{
- min-height:180px;background:#e9e4d7;
- border:2px dashed #a5a18f;
- display:flex;align-items:center;justify-content:center;
- text-align:center;padding:15px;
- color:#687a7d;font-family:Caveat;font-size:22px;
- cursor:pointer;
+ width:100%;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:#101a22;
+ padding:12px;
 }
-.photo:hover{background:#dfe9e4}
-.photo img{width:100%;height:100%;object-fit:cover;display:block;}
-.caption{text-align:center;font-size:12px;color:#67777a;margin-top:8px}
+.photo img{
+ width:100%;
+ height:auto;
+ max-height:700vh;
+ object-fit:contain;
+ display:block;
+ transition:transform 0.5s ease;
+}
+.photo-card:hover .photo img {transform:scale(1.01);}
+.caption{
+ text-align:center;color:#34495e;padding:12px;
+ font-family:Caveat;font-size:22px;background:#fdfbf7;
+ border-top:1px solid #f0e8db;
+}
 .video{
- display:inline-block;padding:14px 20px;
- background:#d9795e;color:white;
- text-decoration:none;font-weight:700;margin:12px 0;
+ display:inline-flex;align-items:center;gap:10px;
+ padding:12px 20px;
+ background:linear-gradient(135deg, #12291e 0%, #1c3529 100%);
+ color:#e5c158;
+ text-decoration:none;font-weight:700;margin:10px 0 20px;
+ border-radius:8px;font-size:14px;
+ border:1px solid #d4af37;
+ box-shadow:0 6px 16px rgba(18,41,30,0.25);
+ transition:all 0.3s ease;
 }
-@media(max-width:700px){
- .hero-layout{grid-template-columns:1fr;gap:24px}
- .portrait{min-height:220px}
- .section{padding:32px 5%}
- .section-heading{display:block;margin-bottom:20px}
- .story-grid{
-  display:grid;
-  grid-template-columns:minmax(0,1fr);
-  gap:14px;
-  width:100%;
-  max-width:none;
- }
- .story,.story:nth-child(n){
-  grid-column:1 / -1;
-  width:100%;
-  min-width:0;
-  min-height:170px;
-  padding:19px 18px;
-  transform:none;
- }
- .story h3{font-size:clamp(20px,5.5vw,25px);line-height:1.2;max-width:90%}
- .story p{font-size:13px;line-height:1.55;max-width:85%;margin-bottom:18px}
- .story .num{font-size:10px;letter-spacing:2px}
- .story .emoji{font-size:29px;margin:10px 0 4px}
- .story .arrow{right:15px;bottom:12px;font-size:23px}
- .quote{margin:10px 5% 30px;padding:22px 16px}
- .quote p{font-size:clamp(18px,5vw,23px);line-height:1.4}
+.video:hover{
+ background:#d4af37;
+ color:#12291e;
+ transform:translateY(-2px);
+ box-shadow:0 10px 20px rgba(212,175,55,0.4);
 }
-@media(max-width:430px){
- .hero{padding:32px 6% 38px}
- .topline{font-size:9px;letter-spacing:2px}
- .hero-sub{font-size:13px}
- .section-heading h2{font-size:30px}
- .story-grid{gap:12px}
- .story,.story:nth-child(n){min-height:160px;padding:17px 15px}
- .story h3{font-size:20px}
- .story p{font-size:12px}
- .dialog{padding:18px;max-height:94dvh}
- .dialog p,.dialog li{font-size:14px;line-height:1.65}
- .gallery{gap:12px}
- .photo{min-height:150px}
+
+/* АДАПТИВНОСТЬ ДЛЯ ПЛАНШЕТОВ И МОБИЛЬНЫХ ЭКРАНОВ */
+@media(max-width:1024px){
+ body{padding:10px;align-items:flex-start;}
+ .poster{
+  grid-template-columns: 1fr;
+  aspect-ratio: auto;
+  min-height: auto;
+ }
+ .poster::before { display: none; }
+ .hero{border-right:none;border-bottom:2px solid #09120e;padding:30px 20px;}
+ .album-right{padding:25px 20px;}
+ .story-grid{grid-template-columns:repeat(2, 1fr);}
+}
+
+@media(max-width:640px){
+ .story-grid{grid-template-columns:1fr;}
+ .section-heading{display:block;margin-bottom:15px}
+ .section-heading span{display:block;margin-top:4px;}
+ .story{height:auto;min-height:120px;padding:18px;}
+ .dialog{padding:20px;max-height:92vh}
 }
 </style>
 </head>
 <body>
 
+<!-- ГЛАВНЫЙ АЛЬБОМНЫЙ ПОСТЕР (LANDSCAPE FORMAT) -->
 <main class="poster">
 
-<section class="hero">
- <div class="topline">ЛИСТАЯ СТРАНИЦЫ ЖИЗНИ • ИСТОРИЯ ЧЕЛОВЕКА</div>
- <h1>У каждого времени<br>свои герои!</h1>
- <div class="hero-sub">Память, мужество и судьба человека</div>
-
- <div class="hero-layout">
-  <div class="portrait">
-<img src="images/1.jpg" alt="Дмитрий Полухин" style="width:100%; height:100%; min-height:280px; object-fit:cover;">  </div>    
+ <!-- ЛЕВАЯ СТРАНИЦА: HERO & ПОРТРЕТ -->
+ <section class="hero">
   <div>
-   <div class="intro-label">Главный герой этой истории</div>
-   <div class="intro-text">Полухин<br>Дмитрий Георгиевич</div>
-   <p class="intro-small">
-    Воин-интернационалист, семьянин,
-    тренер и человек, чья история
-    достойна памяти поколений.
-   </p>
+   <span class="topline">Память и честь</span>
+   <h1>У каждого времени<br>свои герои!</h1>
+   <div class="hero-sub">Мужество, доблесть и судьба человека</div>
   </div>
- </div>
-</section>
 
-<section class="section">
- <div class="section-heading">
-  <h2>Страницы жизни</h2>
- </div>
+  <div class="hero-layout">
+   <div class="portrait-wrap">
+    <div class="portrait">
+     <img src="images/1.jpg" alt="Дмитрий Полухин">
+    </div>
+   </div>  
+   <div>
+    <div class="intro-label">Главный герой истории</div>
+    <div class="intro-text">Полухин<br>Дмитрий Георгиевич</div>
+    <p class="intro-small">
+     Воин-интернационалист, семьянин,
+     тренер и человек, чья история
+     достойна памяти поколений.
+    </p>
+   </div>
+  </div>
 
- <div class="story-grid">
+  <div style="font-size:11px; color:#a0b2c6; text-align:center; opacity:0.7;">
+  </div>
+ </section>
 
-  <button class="story" onclick="openPage('childhood')">
-   <div class="num">01 / НАЧАЛО</div>
-   <h3>Детство и юность</h3>
-   <p>Первые воспоминания, дорога во взрослую жизнь.</p>
-   <span class="arrow">↗</span>
-  </button>
+ <!-- ПРАВАЯ СТРАНИЦА: ГЛАВЫ И ЦИТАТА -->
+ <section class="album-right">
+  <div class="section-heading">
+   <h2>Хроника жизни и подвига Полухина Дмитрия Георгиевича</h2>
+  </div>
 
-  <button class="story" onclick="openPage('afghan')">
-   <div class="num">02 / ИСПЫТАНИЕ</div>
-   <h3>Долг. Честь. Мужество.</h3>
-   <p>Военная служба и страницы афганской истории.</p>
-   <span class="arrow">↗</span>
-  </button>
+  <!-- СЕТКА ИЗ 6 КНОПОК-ИСТОРИЙ -->
+  <div class="story-grid">
 
-  <button class="story" onclick="openPage('awards')">
-   <div class="num">03 / ПРИЗНАНИЕ</div>
-   <h3>Награды</h3>
-   <p>Знаки мужества, заслуг и памяти.</p>
-   <span class="arrow">↗</span>
-  </button>
+   <button class="story" onclick="openPage('childhood')">
+    <p>Первые воспоминания, дорога во взрослую жизнь.</p>
+    <span class="arrow">↗</span>
+   </button>
 
-  <button class="story" onclick="openPage('memory')">
-   <div class="num">04 / ПРЕЕМСТВЕННОСТЬ</div>
-   <h3>Живая память</h3>
-   <p>Встречи, памятные мероприятия, уважение поколений.</p>
-   <span class="arrow">↗</span>
-  </button>
+   <button class="story" onclick="openPage('afghan')">
+    <p>Военная служба и страницы афганской истории.</p>
+    <span class="arrow">↗</span>
+   </button>
 
-  <button class="story" onclick="openPage('peace')">
-   <div class="num">05 / НАСТОЯЩЕЕ</div>
-   <h3>Созидая мирное завтра</h3>
-   <p>Спорт, воспитание молодёжи и тренерская работа.</p>
-   <span class="arrow">↗</span>
-  </button>
+   <button class="story" onclick="openPage('awards')">
+    <p>Знаки мужества, заслуг и памяти.</p>
+    <span class="arrow">↗</span>
+   </button>
 
-  <button class="story" onclick="openPage('family')">
-   <div class="num">06 / САМОЕ ДОРОГОЕ</div>
-   <h3>Надёжный тыл ветерана</h3>
-   <p>Семья, близкие и то, ради чего хочется жить.</p>
-   <span class="arrow">↗</span>
-  </button>
+   <button class="story" onclick="openPage('memory')">
+    <p>Встречи, памятные мероприятия, уважение поколений.</p>
+    <span class="arrow">↗</span>
+   </button>
 
- </div>
-</section>
+   <button class="story" onclick="openPage('peace')">
+    <p>Спорт, воспитание молодёжи и тренерская работа.</p>
+    <span class="arrow">↗</span>
+   </button>
 
-<div class="quote">
- <p>«У каждого времени свои герои,<br>но память о них не знает времени»</p>
- <span>История продолжается...</span>
-</div>
+   <button class="story" onclick="openPage('family')">
+    <p>Семья, близкие и то, ради чего хочется жить.</p>
+    <span class="arrow">↗</span>
+   </button>
 
-<footer>
-</footer>
+  </div>
+
+  <div class="quote">
+   <p>«У каждого времени свои герои, но память о них не знает времени»</p>
+   <span>История продолжается...</span>
+  </div>
+ </section>
+
 </main>
 
+<!-- МОДАЛЬНОЕ ОКНО ДЛЯ ЧТЕНИЯ ГЛАВ -->
 <div class="modal" id="modal">
  <div class="dialog">
   <button class="close" onclick="closePage()">×</button>
@@ -333,17 +500,23 @@ childhood:`
 <h2>Детство и юность</h2>
 <p>Родился в городе Скопине Рязанской области в семье военного 10.06.1961 года. Вся жизнь Дмитрия прошла в военных городках. С трёх лет Дмитрий стал проживать с семьёй в Армении из-за перевода отца. Там окончил школу и железнодорожный техникум. В 1980 году был призван в ряды Советской Армии в Ферганский 345 отдельный гвардейский парашютно-десантный полк. После обучения попал в Афганистан…</p>
 <div class="gallery">
- <div><div class="photo"><img src="images/2.jpg" alt="Детские годы"></div><div class="caption">Детские годы</div></div>
+ <div class="photo-card">
+  <div class="photo"><img src="images/2.jpg" alt="Детские годы"></div>
+  <div class="caption">Детские годы</div>
+ </div>
 </div>`,
 
 afghan:`
 <h2>Долг. Честь. Мужество.</h2>
-<p>Служба Дмитрия Георгиевича в Афганистане — важная страница его жизни. В этом разделе будут представлены фотографии, воспоминания и видеоматериалы.</p>
-<a class="video" href="https://drive.google.com/file/d/17qJyoW7XPYsprmjLpC9Em6BfjQK3eVRV/view?usp=drive_link" target="_blank">▶ Посмотреть видео об Афганистане</a>
+<p>Служба Дмитрия Георгиевича в Афганистане — важная страница его жизни.</p>
+<a class="video" href="https://drive.google.com/file/d/17qJyoW7XPYsprmjLpC9Em6BfjQK3eVRV/view?usp=drive_link" target="_blank">▶ Воспоминания Полухина Д. Г. об Афганистане</a>
 <div class="gallery">
- <div><div class="photo"><img src="images/4.jpg" alt="Военная служба"></div><div class="caption">Военная служба</div></div>
- <div><div class="photo"><img src="images/5.jpg" alt="Боевые товарищи"></div><div class="caption">Боевые товарищи</div></div>
- <div><div class="photo"><img src="images/6.jpg" alt="Памятные моменты"></div><div class="caption">Памятные моменты</div></div>
+ <div class="photo-card"><div class="photo"><img src="images/4.jpg" alt="Военная служба"></div><div class="caption">Военная служба</div></div>
+ <div class="photo-card"><div class="photo"><img src="images/5.jpg" alt="Боевые товарищи"></div><div class="caption">Боевые товарищи</div></div>
+ <div class="photo-card"><div class="photo"><img src="images/6.jpg" alt="Памятные моменты"></div><div class="caption">Памятные моменты</div></div>
+ <div class="photo-card"><div class="photo"><img src="images/7.jpg" alt="Фото из архива"></div><div class="caption">Службой закаленные</div></div>
+ <div class="photo-card"><div class="photo"><img src="images/8.jpg" alt="Фото из архива"></div><div class="caption">Боевой путь</div></div>
+ <div class="photo-card"><div class="photo"><img src="images/9.jpg" alt="Фото из архива"></div><div class="caption">На службе</div></div>
 </div>`,
 
 awards:`
@@ -361,33 +534,34 @@ awards:`
 <li>Нагрудный знак «Гвардия»</li>
 </ul>
 <div class="gallery">
- <div><div class="photo"><img src="images/10.jpg" alt="Медали и ордены"></div><div class="caption">Медали и ордены</div></div>
+ <div class="photo-card"><div class="photo"><img src="images/10.jpg" alt="Медали и ордена"></div><div class="caption">Медали и ордена</div></div>
 </div>`,
 
 memory:`
 <h2>Живая память</h2>
 <p>Дмитрий Георгиевич — постоянный участник патриотических митингов и мероприятий по увековечиванию памяти павших воинов-интернационалистов.</p>
 <div class="gallery">
- <div><div class="photo"><img src="images/11.jpg" alt="Памятные мероприятия"></div><div class="caption">Памятные мероприятия</div></div>
- <div><div class="photo"><img src="images/12.jpg" alt="Встречи поколений"></div><div class="caption">Встречи поколений</div></div>
- <div><div class="photo"><img src="images/13.jpg" alt="Сохранение памяти"></div><div class="caption">Сохранение памяти</div></div>
+ <div class="photo-card"><div class="photo"><img src="images/11.jpg" alt="Памятные мероприятия"></div><div class="caption">Памятные мероприятия</div></div>
+ <div class="photo-card"><div class="photo"><img src="images/12.jpg" alt="Встречи поколений"></div><div class="caption">Встречи поколений</div></div>
+ <div class="photo-card"><div class="photo"><img src="images/13.jpg" alt="Сохранение памяти"></div><div class="caption">Сохранение памяти</div></div>
+ <div class="photo-card"><div class="photo"><img src="images/131.jpg" alt="На выступлении"></div><div class="caption">На выступлении</div></div>
 </div>`,
 
 peace:`
-<h2>Cозидая мирное завтра</h2>
+<h2>Созидая мирное завтра</h2>
 <p>Сегодня Дмитрий Георгиевич работает тренером по боксу в филиале учреждения «ГОЦОР единоборств» в городе Речица. Занимается любимым делом — тренирует ребят.</p>
 <div class="gallery">
- <div><div class="photo"><img src="images/14.jpg" alt="Тренерская работа"></div><div class="caption">Тренерская работа</div></div>
- <div><div class="photo"><img src="images/15.jpg" alt="Юные спортсмены"></div><div class="caption">Юные спортсмены</div></div>
- <div><div class="photo"><img src="images/16.jpg" alt="Занятия боксом"></div><div class="caption">Занятия боксом</div></div>
+ <div class="photo-card"><div class="photo"><img src="images/14.jpg" alt="Тренерская работа"></div><div class="caption">Тренерская работа</div></div>
+ <div class="photo-card"><div class="photo"><img src="images/15.jpg" alt="Юные спортсмены"></div><div class="caption">Юные спортсмены</div></div>
+ <div class="photo-card"><div class="photo"><img src="images/16.jpg" alt="Занятия боксом"></div><div class="caption">Занятия боксом</div></div>
 </div>`,
 
 family:`
 <h2>Надёжный тыл ветерана</h2>
 <p>Дмитрий Георгиевич — счастливый муж, отец и дедушка. Его семья — надежда и опора: жена Людмила, сын Алексей, дочь Екатерина и любимая внучка София.</p>
 <div class="gallery">
- <div><div class="photo"><img src="images/17.jpg" alt="Семья"></div><div class="caption">Семья</div></div>
- <div><div class="photo"><img src="images/18.jpg" alt="Дети и близкие"></div><div class="caption">Дети и близкие</div></div>
+ <div class="photo-card"><div class="photo"><img src="images/17.jpg" alt="Семья"></div><div class="caption">Семья</div></div>
+ <div class="photo-card"><div class="photo"><img src="images/18.jpg" alt="Дети и близкие"></div><div class="caption">Дети и близкие</div></div>
 </div>`
 };
 
@@ -397,9 +571,12 @@ const content=document.getElementById('content');
 function openPage(id){
  content.innerHTML=pages[id];
  modal.classList.add('open');
- modal.scrollTop=0;
+ document.body.style.overflow = 'hidden';
 }
-function closePage(){modal.classList.remove('open')}
+function closePage(){
+ modal.classList.remove('open');
+ document.body.style.overflow = '';
+}
 
 modal.addEventListener('click',e=>{
  if(e.target===modal)closePage();
